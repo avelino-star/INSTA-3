@@ -5,77 +5,429 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mayres Avelino | Conteúdos Exclusivos</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
-  <!-- Ícone do WhatsApp (adicionado) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    /* (TODO O RESTO DO CSS PERMANECE IGUAL) */
-    
-    /* Texto LED "ARRASTE PRA BAIXO" - AGORA MAIS FORTE */
+    /* (MANTIDO TUDO IGUAL) */
+    :root {
+      --primary: #25D366;
+      --primary-hover: #128C7E;
+      --blue: #4285F4;
+      --blue-hover: #3367D6;
+      --pink: #FF4081;
+      --pink-hover: #E91E63;
+      --purple: #9C27B0;
+      --purple-hover: #7B1FA2;
+      --yellow: #FFC107;
+      --yellow-hover: #FFA000;
+      --red: #FF5252;
+      --red-hover: #E53935;
+      --text: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --bg: #000;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Céu estrelado */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle var(--duration, 5s) infinite ease-in-out;
+    }
+
+    /* Estrelas cadentes */
+    .shooting-star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
+      border-radius: 50%;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes shooting {
+      0% { 
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+      }
+      100% { 
+        transform: translateX(1000px) translateY(300px);
+        opacity: 0;
+      }
+    }
+
+    .main-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .content-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+    }
+
+    .image-container {
+      position: relative;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Texto LED "ARRASTE PRA BAIXO" - MODIFICADO */
     .drag-text {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #00ff44; /* VERDE MAIS FORTE */
-      text-shadow: 
-        0 0 10px rgba(0, 255, 68, 0.9),
-        0 0 20px rgba(0, 255, 68, 0.6),
-        0 0 30px rgba(0, 255, 68, 0.3);
+      color: #00ff40; /* Cor mais forte LED */
+      text-shadow: 0 0 10px #00ff40, 0 0 20px #00ff40; /* Efeito LED mais intenso */
       margin-bottom: 1rem;
-      animation: pulse 1.5s infinite;
+      animation: pulse 1s infinite alternate; /* Animação mais rápida */
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.9; }
-      50% { opacity: 1; text-shadow: 0 0 20px rgba(0, 255, 68, 1); }
+      0% { opacity: 0.8; }
+      100% { opacity: 1; text-shadow: 0 0 15px #00ff40, 0 0 30px #00ff40; }
     }
 
-    /* BOTÃO COM ÍCONE DO WHATSAPP */
-    .whatsapp-btn i {
-      margin-left: 8px; /* Espaço entre texto e ícone */
-      font-size: 1.2em;
+    .product-image {
+      width: 100%;
+      max-width: 400px; /* IMAGEM DIMINUÍDA */
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      animation: float 8s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.3));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .cta-section {
+      width: 45%;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: fadeInRight 1.2s 0.6s forwards;
+    }
+
+    @keyframes fadeInRight {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .cta-heading {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      line-height: 1.2;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      margin: 0.5rem 0;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    /* BOTÃO "ENVIAR COMPROVANTE" AGORA É O ÚLTIMO */
+    .whatsapp-btn {
+      background-color: var(--primary);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+      margin-top: 2rem !important; /* MOVIDO PARA BAIXO */
+    }
+
+    .whatsapp-btn:hover {
+      background-color: var(--primary-hover);
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .blue-btn {
+      background-color: var(--blue);
+      box-shadow: 0 0 20px rgba(66, 133, 244, 0.4);
+    }
+
+    .blue-btn:hover {
+      background-color: var(--blue-hover);
+      box-shadow: 0 0 30px rgba(66, 133, 244, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .pink-btn {
+      background-color: var(--pink);
+      box-shadow: 0 0 20px rgba(255, 64, 129, 0.4);
+    }
+
+    .pink-btn:hover {
+      background-color: var(--pink-hover);
+      box-shadow: 0 0 30px rgba(255, 64, 129, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .purple-btn {
+      background-color: var(--purple);
+      box-shadow: 0 0 20px rgba(156, 39, 176, 0.4);
+    }
+
+    .purple-btn:hover {
+      background-color: var(--purple-hover);
+      box-shadow: 0 0 30px rgba(156, 39, 176, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .yellow-btn {
+      background-color: var(--yellow);
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+      color: #000;
+    }
+
+    .yellow-btn:hover {
+      background-color: var(--yellow-hover);
+      box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .red-btn {
+      background-color: var(--red);
+      box-shadow: 0 0 20px rgba(255, 82, 82, 0.4);
+    }
+
+    .red-btn:hover {
+      background-color: var(--red-hover);
+      box-shadow: 0 0 30px rgba(255, 82, 82, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .disclaimer {
+      font-size: 0.9rem;
+      color: #ff4444;
+      margin-top: 1.5rem;
+      line-height: 1.6;
+      font-weight: 500;
+      text-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      .content-wrapper {
+        flex-direction: column;
+      }
+      
+      .image-container {
+        width: 100%;
+        margin-bottom: 3rem;
+      }
+      
+      .cta-section {
+        width: 100%;
+        text-align: center;
+      }
+
+      .cta-button {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cta-heading {
+        font-size: 2.2rem;
+      }
+      
+      .cta-button {
+        font-size: 1rem;
+        padding: 0.9rem 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- (TODO O RESTO DO HTML PERMANECE IGUAL ATÉ O SCRIPT) -->
+  <!-- Céu estrelado -->
+  <div class="stars" id="stars"></div>
+  <div id="shooting-stars"></div>
+
+  <div class="main-container">
+    <div class="content-wrapper">
+      <div class="image-container">
+        <!-- Texto LED adicionado acima da imagem -->
+        <div class="drag-text">ARRASTE PRA BAIXO</div>
+        <img src="https://github.com/avelino-star/INSTA/blob/main/TABELA%20DE%20PREC%CC%A7OS.png?raw=true" 
+             alt="Pacotes Mayres Avelino" 
+             class="product-image">
+      </div>
+      
+      <div class="cta-section">
+        <h1 class="cta-heading">ESCOLHA:</h1>
+        <!-- Botões reordenados (Enviar comprovante agora é o último) -->
+        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button blue-btn">
+          Chamada de Video
+        </a>
+        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button pink-btn">
+          Pack Completo
+        </a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button purple-btn">
+          Pack Vip
+        </a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button yellow-btn">
+          Pack do Pezinho
+        </a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228f15-577f-402f-99c3-a4596c1d55db" class="cta-button red-btn">
+          Pack Personalizado
+        </a>
+        <!-- Botão "Enviar comprovante" agora é o último com ícone do WhatsApp -->
+        <a href="https://wa.me/message/FW3JE7JY2PAFL1" class="cta-button whatsapp-btn">
+          Enviar Comprovante <span style="margin-left: 8px;">📱</span>
+        </a>
+        
+        <p class="disclaimer">
+          ATENÇÃO: O conteúdo comprado será enviado a você no Whatsapp assim que enviar o comprovante!
+        </p>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // ===== ESTRELAS CADENTES INFINITAS ===== //
+    // Criar estrelas fixas
+    const starsContainer = document.getElementById('stars');
+    const starCount = 300; // Aumentado para mais estrelas
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      
+      const size = Math.random() * 2 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.setProperty('--duration', `${Math.random() * 5 + 3}s`);
+      starsContainer.appendChild(star);
+    }
+
+    // Estrelas cadentes - MODIFICADO para muitas estrelas
+    const shootingStarsContainer = document.getElementById('shooting-stars');
+    
     function createShootingStar() {
       const star = document.createElement('div');
       star.classList.add('shooting-star');
       
-      // Posição aleatória no topo da tela
       star.style.left = `${Math.random() * 20}%`;
       star.style.top = `${Math.random() * 20}%`;
+      star.style.width = `${Math.random() * 3 + 2}px`;
+      star.style.height = star.style.width;
       
-      // Tamanho variado
-      const size = Math.random() * 4 + 2;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
+      star.style.animation = `shooting ${Math.random() * 2 + 1}s linear forwards`; // Mais rápidas
+      shootingStarsContainer.appendChild(star);
       
-      // Duração aleatória da animação
-      const duration = Math.random() * 1.5 + 1;
-      star.style.animation = `shooting ${duration}s linear forwards`;
-      
-      document.getElementById('shooting-stars').appendChild(star);
-      
-      // Remover após animação
-      setTimeout(() => star.remove(), duration * 1000);
+      setTimeout(() => {
+        star.remove();
+      }, 2000);
     }
-
-    // Criar estrelas cadentes continuamente (5 por segundo)
+    
+    // Muitas estrelas cadentes (5 a cada 1 segundo)
     setInterval(() => {
-      for (let i = 0; i < 3; i++) {
-        setTimeout(createShootingStar, i * 300);
-      }
-    }, 800);
-
-    // Iniciar várias estrelas imediatamente
-    for (let i = 0; i < 8; i++) {
-      setTimeout(createShootingStar, i * 150);
+      createShootingStar();
+      setTimeout(createShootingStar, 200);
+      setTimeout(createShootingStar, 400);
+      setTimeout(createShootingStar, 600);
+      setTimeout(createShootingStar, 800);
+    }, 1000);
+    
+    // Iniciar com várias estrelas
+    for (let i = 0; i < 10; i++) {
+      setTimeout(() => createShootingStar(), i * 200);
     }
 
-    // ===== (O RESTO DO SCRIPT PERMANECE IGUAL) ===== //
+    // Efeito de alta performance ao rolar (FPS alto)
+    let lastScrollPosition = 0;
+    let scrollVelocity = 0;
+    const stars = document.querySelector('.stars');
+    let animationFrameId;
+
+    function updateStarsPosition() {
+      const scrollPosition = window.pageYOffset;
+      scrollVelocity = scrollPosition - lastScrollPosition;
+      lastScrollPosition = scrollPosition;
+      
+      // Efeito ultra suave com requestAnimationFrame (alta performance)
+      stars.style.transform = `translateY(${scrollVelocity * 0.8}px) rotate(${scrollVelocity * 0.2}deg)`;
+      
+      animationFrameId = requestAnimationFrame(updateStarsPosition);
+    }
+
+    // Otimizado para performance
+    window.addEventListener('scroll', () => {
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(updateStarsPosition);
+      }
+    });
+
+    // Parar animação quando não estiver rolando
+    let scrollStopTimer;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollStopTimer);
+      scrollStopTimer = setTimeout(() => {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }, 100);
+    });
   </script>
 </body>
 </html>
