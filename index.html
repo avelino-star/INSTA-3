@@ -6,7 +6,6 @@
   <title>Mayres Avelino | Conteúdos Exclusivos</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
   <style>
-    /* (MANTIDO TUDO IGUAL) */
     :root {
       --primary: #25D366;
       --primary-hover: #128C7E;
@@ -42,7 +41,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Céu estrelado */
     .stars {
       position: fixed;
       top: 0;
@@ -60,7 +58,6 @@
       animation: twinkle var(--duration, 5s) infinite ease-in-out;
     }
 
-    /* Estrelas cadentes */
     .shooting-star {
       position: absolute;
       width: 4px;
@@ -77,11 +74,11 @@
     }
 
     @keyframes shooting {
-      0% { 
+      0% {
         transform: translateX(0) translateY(0);
         opacity: 1;
       }
-      100% { 
+      100% {
         transform: translateX(1000px) translateY(300px);
         opacity: 0;
       }
@@ -116,24 +113,23 @@
       justify-content: center;
     }
 
-    /* Texto LED "ARRASTE PRA BAIXO" - MODIFICADO */
     .drag-text {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: #00ff40; /* Cor mais forte LED */
-      text-shadow: 0 0 10px #00ff40, 0 0 20px #00ff40; /* Efeito LED mais intenso */
+      color: #00ff40;
+      text-shadow: 0 0 20px #00ff40, 0 0 40px #00ff40;
       margin-bottom: 1rem;
-      animation: pulse 1s infinite alternate; /* Animação mais rápida */
+      animation: pulse 0.9s infinite alternate;
     }
 
     @keyframes pulse {
       0% { opacity: 0.8; }
-      100% { opacity: 1; text-shadow: 0 0 15px #00ff40, 0 0 30px #00ff40; }
+      100% { opacity: 1; text-shadow: 0 0 25px #00ff40, 0 0 50px #00ff40; }
     }
 
     .product-image {
       width: 100%;
-      max-width: 400px; /* IMAGEM DIMINUÍDA */
+      max-width: 400px;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
@@ -187,11 +183,11 @@
       max-width: 300px;
     }
 
-    /* BOTÃO "ENVIAR COMPROVANTE" AGORA É O ÚLTIMO */
     .whatsapp-btn {
       background-color: var(--primary);
       box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
-      margin-top: 2rem !important; /* MOVIDO PARA BAIXO */
+      margin-top: 2rem !important;
+      animation: float 5s ease-in-out infinite;
     }
 
     .whatsapp-btn:hover {
@@ -265,17 +261,16 @@
       text-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
     }
 
-    /* Responsivo */
     @media (max-width: 1024px) {
       .content-wrapper {
         flex-direction: column;
       }
-      
+
       .image-container {
         width: 100%;
         margin-bottom: 3rem;
       }
-      
+
       .cta-section {
         width: 100%;
         text-align: center;
@@ -290,7 +285,7 @@
       .cta-heading {
         font-size: 2.2rem;
       }
-      
+
       .cta-button {
         font-size: 1rem;
         padding: 0.9rem 1.8rem;
@@ -299,59 +294,42 @@
   </style>
 </head>
 <body>
-  <!-- Céu estrelado -->
   <div class="stars" id="stars"></div>
   <div id="shooting-stars"></div>
 
   <div class="main-container">
     <div class="content-wrapper">
       <div class="image-container">
-        <!-- Texto LED adicionado acima da imagem -->
         <div class="drag-text">ARRASTE PRA BAIXO</div>
-        <img src="https://github.com/avelino-star/INSTA/blob/main/TABELA%20DE%20PREC%CC%A7OS.png?raw=true" 
-             alt="Pacotes Mayres Avelino" 
+        <img src="https://github.com/avelino-star/INSTA/blob/main/TABELA%20DE%20PREC%CC%A7OS.png?raw=true"
+             alt="Pacotes Mayres Avelino"
              class="product-image">
       </div>
-      
+
       <div class="cta-section">
         <h1 class="cta-heading">ESCOLHA:</h1>
-        <!-- Botões reordenados (Enviar comprovante agora é o último) -->
-        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button blue-btn">
-          Chamada de Video
-        </a>
-        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button pink-btn">
-          Pack Completo
-        </a>
-        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button purple-btn">
-          Pack Vip
-        </a>
-        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button yellow-btn">
-          Pack do Pezinho
-        </a>
-        <a href="https://app.pushinpay.com.br/service/pay/9f228f15-577f-402f-99c3-a4596c1d55db" class="cta-button red-btn">
-          Pack Personalizado
-        </a>
-        <!-- Botão "Enviar comprovante" agora é o último com ícone do WhatsApp -->
+        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button blue-btn">Chamada de Video</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button pink-btn">Pack Completo</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button purple-btn">Pack Vip</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button yellow-btn">Pack do Pezinho</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228f15-577f-402f-99c3-a4596c1d55db" class="cta-button red-btn">Pack Personalizado</a>
         <a href="https://wa.me/message/FW3JE7JY2PAFL1" class="cta-button whatsapp-btn">
-          Enviar Comprovante <span style="margin-left: 8px;">📱</span>
+          Enviar Comprovante
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 20px; height: 20px; margin-left: 8px;">
         </a>
-        
-        <p class="disclaimer">
-          ATENÇÃO: O conteúdo comprado será enviado a você no Whatsapp assim que enviar o comprovante!
-        </p>
+        <p class="disclaimer">ATENÇÃO: O conteúdo comprado será enviado a você no Whatsapp assim que enviar o comprovante!</p>
       </div>
     </div>
   </div>
 
   <script>
-    // Criar estrelas fixas
     const starsContainer = document.getElementById('stars');
-    const starCount = 300; // Aumentado para mais estrelas
-    
+    const starCount = 300;
+
     for (let i = 0; i < starCount; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
-      
+
       const size = Math.random() * 2 + 1;
       star.style.width = `${size}px`;
       star.style.height = `${size}px`;
@@ -361,27 +339,25 @@
       starsContainer.appendChild(star);
     }
 
-    // Estrelas cadentes - MODIFICADO para muitas estrelas
     const shootingStarsContainer = document.getElementById('shooting-stars');
-    
+
     function createShootingStar() {
       const star = document.createElement('div');
       star.classList.add('shooting-star');
-      
-      star.style.left = `${Math.random() * 20}%`;
-      star.style.top = `${Math.random() * 20}%`;
+
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
       star.style.width = `${Math.random() * 3 + 2}px`;
       star.style.height = star.style.width;
-      
-      star.style.animation = `shooting ${Math.random() * 2 + 1}s linear forwards`; // Mais rápidas
+
+      star.style.animation = `shooting ${Math.random() * 2 + 1}s linear forwards`;
       shootingStarsContainer.appendChild(star);
-      
+
       setTimeout(() => {
         star.remove();
       }, 2000);
     }
-    
-    // Muitas estrelas cadentes (5 a cada 1 segundo)
+
     setInterval(() => {
       createShootingStar();
       setTimeout(createShootingStar, 200);
@@ -389,13 +365,11 @@
       setTimeout(createShootingStar, 600);
       setTimeout(createShootingStar, 800);
     }, 1000);
-    
-    // Iniciar com várias estrelas
+
     for (let i = 0; i < 10; i++) {
       setTimeout(() => createShootingStar(), i * 200);
     }
 
-    // Efeito de alta performance ao rolar (FPS alto)
     let lastScrollPosition = 0;
     let scrollVelocity = 0;
     const stars = document.querySelector('.stars');
@@ -405,21 +379,16 @@
       const scrollPosition = window.pageYOffset;
       scrollVelocity = scrollPosition - lastScrollPosition;
       lastScrollPosition = scrollPosition;
-      
-      // Efeito ultra suave com requestAnimationFrame (alta performance)
       stars.style.transform = `translateY(${scrollVelocity * 0.8}px) rotate(${scrollVelocity * 0.2}deg)`;
-      
       animationFrameId = requestAnimationFrame(updateStarsPosition);
     }
 
-    // Otimizado para performance
     window.addEventListener('scroll', () => {
       if (!animationFrameId) {
         animationFrameId = requestAnimationFrame(updateStarsPosition);
       }
     });
 
-    // Parar animação quando não estiver rolando
     let scrollStopTimer;
     window.addEventListener('scroll', () => {
       clearTimeout(scrollStopTimer);
