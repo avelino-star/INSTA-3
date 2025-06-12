@@ -156,7 +156,11 @@
     .purple-btn { background: #9C27B0; }
     .yellow-btn { background: #FFC107; color: #000; }
     .red-btn { background: #FF5252; }
-    .whatsapp-btn { background: #25D366; }
+    .whatsapp-btn {
+      background: #25D366;
+      margin-top: 2rem;
+      animation: float 5s ease-in-out infinite;
+    }
 
     .disclaimer {
       font-size: 1rem;
@@ -196,7 +200,6 @@
     const starsContainer = document.getElementById('stars');
     const shootingContainer = document.getElementById('shooting-stars');
 
-    // estrelas fixas
     for (let i = 0; i < 300; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
@@ -208,7 +211,6 @@
       starsContainer.appendChild(star);
     }
 
-    // estrelas cadentes
     function createShootingStar() {
       const star = document.createElement('div');
       star.classList.add('shooting-star');
