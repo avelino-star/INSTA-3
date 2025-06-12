@@ -25,6 +25,8 @@
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
+      perspective: 1500px;
+      background: linear-gradient(180deg, #000 0%, #050505 100%);
     }
 
     .stars {
@@ -61,14 +63,8 @@
     }
 
     @keyframes shooting {
-      0% {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(1000px, 600px);
-        opacity: 0;
-      }
+      0% { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(1000px, 600px); opacity: 0; }
     }
 
     .main-container {
@@ -86,6 +82,13 @@
       flex-direction: column;
       align-items: center;
       padding: 0 5%;
+      transform-style: preserve-3d;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .image-container {
@@ -93,6 +96,7 @@
       flex-direction: column;
       align-items: center;
       margin-bottom: 2rem;
+      filter: drop-shadow(0 0 20px #00ff40aa);
     }
 
     .drag-text {
@@ -123,6 +127,11 @@
       height: auto;
       border-radius: 12px;
       animation: float 8s ease-in-out infinite;
+      transition: transform 0.4s ease;
+    }
+
+    .product-image:hover {
+      transform: scale(1.03) rotateX(10deg) rotateY(-10deg);
     }
 
     @keyframes float {
@@ -134,11 +143,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 1rem;
     }
 
     .cta-button {
       display: inline-block;
-      margin: 0.5rem 0;
       padding: 1rem 2rem;
       border-radius: 50px;
       font-size: 1.1rem;
@@ -148,16 +157,25 @@
       color: #fff;
       width: 100%;
       max-width: 300px;
-      transition: 0.4s;
+      transition: all 0.3s ease;
+      background-size: 300% 300%;
+      background-position: center;
+      box-shadow: 0 0 15px #ffffff15, 0 0 30px #ffffff10 inset;
     }
 
-    .blue-btn { background: #4285F4; }
-    .pink-btn { background: #FF4081; }
-    .purple-btn { background: #9C27B0; }
-    .yellow-btn { background: #FFC107; color: #000; }
-    .red-btn { background: #FF5252; }
+    .cta-button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 25px #ffffff33;
+      background-position: top right;
+    }
+
+    .blue-btn { background: linear-gradient(135deg, #4285F4, #73b4ff); }
+    .pink-btn { background: linear-gradient(135deg, #FF4081, #ff79b0); }
+    .purple-btn { background: linear-gradient(135deg, #9C27B0, #d17ee5); }
+    .yellow-btn { background: linear-gradient(135deg, #FFC107, #ffe17c); color: #000; }
+    .red-btn { background: linear-gradient(135deg, #FF5252, #ff9494); }
     .whatsapp-btn {
-      background: #25D366;
+      background: linear-gradient(135deg, #25D366, #1fb954);
       margin-top: 2rem;
       animation: float 5s ease-in-out infinite;
       display: flex;
@@ -177,6 +195,41 @@
       color: #ff4444;
       margin-top: 2rem;
       text-align: center;
+    }
+
+    /* Depoimentos */
+    .testimonials {
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 2px solid #00ff40;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .testimonial-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ff40;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px #00ff40, 0 0 20px #00ff40;
+    }
+
+    .testimonial-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testimonial {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #00ff40;
+      color: #f5f5f7;
+      font-style: italic;
+      box-shadow: 0 0 10px #00ff4055;
     }
   </style>
 </head>
@@ -202,8 +255,23 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
           Enviar Comprovante
         </a>
-
         <p class="disclaimer"><strong>ATENÇÃO: O conteúdo comprado será enviado a você no Whatsapp assim que enviar o comprovante!</strong></p>
+      </div>
+
+      <!-- Depoimentos -->
+      <div class="testimonials">
+        <h2 class="testimonial-heading">Elogios de Clientes 😍</h2>
+        <div class="testimonial-list">
+          <div class="testimonial">
+            <p>"Simplesmente perfeita! Entrega rápida e conteúdo surreal. Já virei cliente fixa!"</p>
+          </div>
+          <div class="testimonial">
+            <p>"O melhor pack que já comprei. Qualidade absurda e ainda super atenciosa!"</p>
+          </div>
+          <div class="testimonial">
+            <p>"Ela é maravilhosa. Conteúdo exclusivo mesmo, vale cada centavo."</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
